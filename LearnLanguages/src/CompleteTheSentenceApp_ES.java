@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class CompleteTheSentenceApp
+public class CompleteTheSentenceApp_ES
 {
 	static int j = 0;
 	static int rand2 = 0;
@@ -184,12 +184,12 @@ public class CompleteTheSentenceApp
 
 	private static void readListFromFile() throws FileNotFoundException
 	{
-		String fileName = "sentences.txt";
+		String fileName = "sentences_spanish.txt";
 		String next = "";
 		File textFile = new File(fileName);
 		
-		Locale loc = new Locale("en", "EN");
-		Scanner in = new Scanner(textFile);
+		Locale loc = new Locale("es", "ES");
+		Scanner in = new Scanner(textFile, "UTF-8");
 		in.useLocale(loc);
 
 		while (in.hasNextLine())
