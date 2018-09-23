@@ -1,0 +1,5 @@
+airplane [samolot]
+car [samochód]
+dog [pies]
+cat [kot]
+to be [byæ]
