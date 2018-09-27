@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -20,6 +21,8 @@ public class BooksCollectionApp extends JFrame
 	private JPanel panel = new JPanel();
 	private JTextField field = new JTextField(48);
 	private JButton button = new JButton("Add");
+	
+	public static ArrayList<String> list = new ArrayList<>();
 
 	public BooksCollectionApp()
 	{
@@ -83,9 +86,13 @@ public class BooksCollectionApp extends JFrame
 	public static void main(String[] args) throws Exception
 	{
 		Database.create();
-		Console.start(new BooksCollectionApp(), "Books Collection", 700, 500);
+		Console.start(new BooksCollectionApp(), "Books Collection", 700, 500);		
+		Database.readList();
 		
-		//Database.read();
+		for (String s : list)
+		{
+			System.out.println(s);
+		}
 	}
 
 }
