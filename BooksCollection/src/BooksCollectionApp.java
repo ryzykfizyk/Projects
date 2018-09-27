@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 
 public class BooksCollectionApp extends JFrame
 {
@@ -32,15 +34,24 @@ public class BooksCollectionApp extends JFrame
 
 		final DefaultListModel listOfBooks = new DefaultListModel();
 
-		listOfBooks.addElement("\"Unweaving the Rainbow\" | Richard Dawkins | Science, Delusion and the Appetite for Wonder");
+		//listOfBooks.addElement("\"Unweaving the Rainbow\" | Richard Dawkins | Science, Delusion and the Appetite for Wonder");
+		for (String s : list)
+		{
+			listOfBooks.addElement(s);
+		}
 
-
-		final JList jList = new JList(listOfBooks);
-		JScrollPane listOfBooksScrollPane = new JScrollPane(jList);
-
+		JList jList = new JList(listOfBooks);
+		
 		jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		jList.setPreferredSize(new Dimension(590, 100));
 		jList.setSelectedIndex(0);
-		jList.setVisibleRowCount(7);
+		jList.setVisibleRowCount(10);
+		
+		JScrollPane listOfBooksScrollPane = new JScrollPane(jList);
+		listOfBooksScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		listOfBooksScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+		getContentPane().add(listOfBooksScrollPane, BorderLayout.CENTER);
 
 		field.setText("Add Book in the following format: Title | Author | Description");
 		
@@ -86,8 +97,9 @@ public class BooksCollectionApp extends JFrame
 	public static void main(String[] args) throws Exception
 	{
 		Database.create();
-		Console.start(new BooksCollectionApp(), "Books Collection", 700, 500);		
 		Database.readList();
+		Console.start(new BooksCollectionApp(), "Books Collection", 700, 500);		
+		
 		
 		for (String s : list)
 		{

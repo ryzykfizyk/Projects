@@ -54,7 +54,7 @@ public class Database
 
 			while (result.next())
 			{
-				BooksCollectionApp.list.add(result.getString("title") + " | " + result.getString("author") + " | "
+				BooksCollectionApp.list.add("\""+result.getString("title") + "\" | " + result.getString("author") + " | "
 						+ result.getString("description"));
 			}
 
